@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luxoraa · ecommerce</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: #faf8f6;
+      color: #1e1e1e;
+    }
+
+    /* ---- container & utility ---- */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ---- header / navbar ---- */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      color: #1e1e1e;
+      text-decoration: none;
+    }
+    .logo span {
+      background: #c8a27b;
+      color: #fff;
+      padding: 0 8px;
+      border-radius: 6px;
+      font-weight: 300;
+      margin-right: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-weight: 450;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #2c2c2c;
+      font-size: 16px;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: #a67b5b;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 20px;
+      font-size: 20px;
+      color: #1e1e1e;
+    }
+    .nav-icons i {
+      cursor: default;
+      transition: 0.2s;
+    }
+    .nav-icons i:hover {
+      color: #a67b5b;
+    }
+
+    /* ---- hero section ---- */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px 0 60px;
+      gap: 30px;
+    }
+
+    .hero-text {
+      flex: 1 1 300px;
+    }
+    .hero-text h1 {
+      font-size: 48px;
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+    .hero-text h1 i {
+      color: #c8a27b;
+      font-style: normal;
+    }
+    .hero-text p {
+      margin: 20px 0 32px;
+      font-size: 18px;
+      color: #4a4a4a;
+      max-width: 420px;
+      line-height: 1.6;
+    }
+    .btn {
+      display: inline-block;
+      background: #1e1e1e;
+      color: white;
+      padding: 14px 42px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+      transition: 0.25s;
+      border: 1px solid transparent;
+    }
+    .btn:hover {
+      background: #3a2c24;
+      transform: scale(1.02);
+      box-shadow: 0 12px 20px -10px rgba(0,0,0,0.2);
+    }
+
+    .hero-image {
+      flex: 1 1 300px;
+      background: #e8dfd7;
+      border-radius: 28px;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 12px 28px -8px rgba(0,0,0,0.08);
+    }
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ---- category / featured section ---- */
+    .section-title {
+      font-size: 30px;
+      font-weight: 450;
+      margin: 50px 0 30px;
+      letter-spacing: -0.3px;
+    }
+    .section-title small {
+      font-size: 16px;
+      font-weight: 300;
+      color: #6f6f6f;
+      margin-left: 12px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 28px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 22px;
+      padding: 18px 18px 22px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.02);
+      transition: 0.2s ease;
+      border: 1px solid #f0edea;
+      text-align: center;
+    }
+    .product-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 18px 30px -8px rgba(0,0,0,0.06);
+      border-color: #dccfc4;
+    }
+
+    .product-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      background: #f1ede8;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+    .product-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-card h4 {
+      font-weight: 500;
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+    .product-card .price {
+      font-weight: 500;
+      color: #2a2a2a;
+      letter-spacing: 0.2px;
+    }
+    .product-card .old-price {
+      color: #9a8a7c;
+      font-size: 14px;
+      text-decoration: line-through;
+      margin-left: 6px;
+      font-weight: 400;
+    }
+    .product-card .rating {
+      color: #c8a27b;
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    /* ---- banner / promo ---- */
+    .promo-banner {
+      background: #1e1e1e;
+      border-radius: 32px;
+      padding: 40px 48px;
+      margin: 50px 0 20px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      color: #f2ede8;
+    }
+    .promo-banner h2 {
+      font-weight: 400;
+      font-size: 28px;
+    }
+    .promo-banner h2 strong {
+      font-weight: 600;
+      color: #e2c7b2;
+    }
+    .promo-banner .btn-light {
+      background: #f2ede8;
+      color: #1e1e1e;
+      padding: 12px 36px;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .promo-banner .btn-light:hover {
+      background: white;
+      transform: scale(1.03);
+    }
+
+    /* ---- footer ---- */
+    footer {
+      margin: 70px 0 30px;
+      border-top: 1px solid #e0dad4;
+      padding-top: 36px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 15px;
+      color: #3b3b3b;
+    }
+    footer .footer-links {
+      display: flex;
+      gap: 28px;
+    }
+    footer a {
+      text-decoration: none;
+      color: #3b3b3b;
+      transition: 0.2s;
+    }
+    footer a:hover {
+      color: #a67b5b;
+    }
+    footer i {
+      margin: 0 6px;
+      color: #6b5d52;
+    }
+
+    /* ---- responsive tweaks ---- */
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        gap: 14px;
+        align-items: flex-start;
+      }
+      .nav-links {
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      .hero-text h1 {
+        font-size: 36px;
+      }
+      .promo-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+      }
+    }
+    /* fallback image text (if any img missing) */
+    .product-img img, .hero-image img {
+      background: #e3d9d0;
+    }
+  </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NTV0NLN2X5"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-NTV0NLN2X5');
+</script>
+
+
+</head>
+<body>
+  <div class="container">
+
+    <!-- header -->
+    <header>
+      <div class="navbar">
+        <a href="#" class="logo"><span>L</span>uxoraa</a>
+        <div class="nav-links">
+         <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="about.html">About Us</a>
+        </div>
+        <div class="nav-icons">
+          <i class="fas fa-search"></i>
+          <i class="fas fa-user"></i>
+          <i class="fas fa-shopping-bag"></i>
+        </div>
+      </div>
+    </header>
+
+    <!-- hero -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Timeless <i>elegance</i><br />for every moment</h1>
+        <p>Discover Luxoraa – curated pieces that blend modern minimalism with classic luxury. </p>
+        <a href="#" class="btn">Shop now <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+      </div>
+      <div class="hero-image">
+        <!-- hero image – working placeholder (unsplash) -->
+        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600&h=400&fit=crop&crop=center&auto=format" alt="Luxoraa hero model" />
+      </div>
+    </section>
+
+    <!-- featured products -->
+    <h2 class="section-title">Bestsellers <small>curated for you</small></h2>
+    <div class="grid-4">
+
+      <!-- product 1 -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1563170351-be824bc2aa5e?w=400&h=400&fit=crop&crop=center&auto=format" alt="Luxoraa bag" />
+        </div>
+        <h4>Eco tote</h4>
+        <div class="price">$89 <span class="old-price">$120</span></div>
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> 4.6</div>
+      </div>
+
+      <!-- product 2 -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7512?w=400&h=400&fit=crop&crop=center&auto=format" alt="Luxoraa sneakers" />
+        </div>
+        <h4>Leather sneakers</h4>
+        <div class="price">$145</div>
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 5.0</div>
+      </div>
+
+      <!-- product 3 -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&h=400&fit=crop&crop=center&auto=format" alt="Luxoraa watch" />
+        </div>
+        <h4>Minimal watch</h4>
+        <div class="price">$210 <span class="old-price">$260</span></div>
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.9</div>
+      </div>
+
+      <!-- product 4 -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=400&h=400&fit=crop&crop=center&auto=format" alt="Luxoraa sunglasses" />
+        </div>
+        <h4>Eclipse sunglasses</h4>
+        <div class="price">$98</div>
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> 4.7</div>
+      </div>
+    </div>
+
+    <!-- promo banner -->
+    <div class="promo-banner">
+      <h2><strong>Luxoraa</strong>  ·  new season preview</h2>
+      <a href="#" class="btn-light">Explore collection <i class="fas fa-arrow-right" style="margin-left: 8px;"></i></a>
+    </div>
+
+    <!-- new arrivals (second row) -->
+    <h2 class="section-title" style="margin-top: 20px;">New arrivals</h2>
+    <div class="grid-4">
+
+      <!-- product 5 -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?w=400&h=400&fit=crop&crop=center&auto=format" alt="Luxoraa coat" />
+        </div>
+        <h4>Wool blend coat</h4>
+        <div class="price">$275</div>
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 5.0</div>
+      </div>
+
+      <!-- product 6 -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=400&fit=crop&crop=center&auto=format" alt="Luxoraa backpack" />
+        </div>
+        <h4>Canvas backpack</h4>
+        <div class="price">$119</div>
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i> 4.8</div>
+      </div>
+
+      <!-- product 7 -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1585123334904-845d60e5bcc9?w=400&h=400&fit=crop&crop=center&auto=format" alt="Luxoraa scarf" />
+        </div>
+        <h4>Silk scarf</h4>
+        <div class="price">$65</div>
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 4.9</div>
+      </div>
+
+      <!-- product 8 -->
+      <div class="product-card">
+        <div class="product-img">
+          <img src="https://images.unsplash.com/photo-1591369822096-ffd140c94879?w=400&h=400&fit=crop&crop=center&auto=format" alt="Luxoraa hat" />
+        </div>
+        <h4>Wool fedora</h4>
+        <div class="price">$84</div>
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> 5.0</div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+      <div class="footer-links">
+        <a href="#">About</a>
+        <a href="#">Stores</a>
+        <a href="#">Sustainability</a>
+        <a href="#">Contact</a>
+      </div>
+      <div>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-pinterest"></i>
+        <i class="fab fa-youtube"></i>
+        <span style="margin-left: 18px; opacity:0.5;">© 2026 Luxoraa</span>
+      </div>
+    </footer>
+
+  </div> <!-- container -->
+</body>
+</html>
